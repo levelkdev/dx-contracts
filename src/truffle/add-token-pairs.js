@@ -39,6 +39,7 @@ var argv = require('yargs')
   .argv
 
 async function addTokenPairs () {
+  console.log("here!!")
   if (!argv._[0]) {
     argv.showHelp()
   } else {
@@ -61,7 +62,7 @@ async function addTokenPairs () {
     Deployer account: ${contractsInfo.account}
     DX address: ${contractsInfo.dx.address}
     WETH address: ${contractsInfo.wethAddress}
-    Ether balance: ${contractsInfo.etherBalance}    
+    Ether balance: ${contractsInfo.etherBalance}
     Threshold: $${contractsInfo.thresholdInUSD.toFixed(2)}
     Current Ether price: ${contractsInfo.etherPrice}
 `)
@@ -156,6 +157,8 @@ async function ensureEnoughBalance (token, { account, wethAddress, etherBalance,
     return
   }
 
+  console.log('account: ', account)
+
   const tokenContract = StandardToken.at(tokenAddress)
 
   // dx.deposit.call(tokenAddress)
@@ -172,6 +175,8 @@ async function ensureEnoughBalance (token, { account, wethAddress, etherBalance,
 
   const balanceDxValue = balanceDx.div(1e18)
   const balanceTokenValue = balanceToken.div(1e18)
+  console.log('balanceDxValue: ', balanceDxValue.toNumber())
+  console.log('balanceTokenValue: ', balanceTokenValue.toNumber())
   if (balanceDxValue.lessThan(funding)) {
     let totalTokenBalance = balanceDxValue.plus(balanceTokenValue)
     let balancesString = `\
@@ -189,15 +194,15 @@ Funding: ${funding}`
       if (totalTokenBalance.lessThan(funding)) {
         // The user doesn't have enough tokens
         throw new Error(`The account doesn't have enough balance for token \
-${symbol}. ${balancesString}`)
+          ${symbol}. ${balancesString}`)
       } else {
         throw new Error(`The account has enough balance for token \
-${symbol}, but it needs to wrap Ether and deposit it into the DX. ${balancesString}`)
+          ${symbol}, but it needs to wrap Ether and deposit it into the DX. ${balancesString}`)
       }
     } else {
       // The has enough tokens, but not in the DX
       throw new Error(`The account has enough balance for token \
-${symbol}, but it needs to deposit it into the DX. ${balancesString}`)
+        ${symbol}, but it needs to deposit it into the DX. ${balancesString}`)
     }
   }
 }
