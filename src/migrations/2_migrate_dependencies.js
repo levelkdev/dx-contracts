@@ -25,7 +25,7 @@ function migrate ({
     initialTokenAmount,
     gnoLockPeriodInHours
   }
-  deployer
+  return deployer
     .then(() => deployMath(deployParams))
     .then(() => deployWeth(deployParams))
     .then(() => deployGno(deployParams))
