@@ -39,7 +39,6 @@ var argv = require('yargs')
   .argv
 
 async function addTokenPairs () {
-  console.log("here!!")
   if (!argv._[0]) {
     argv.showHelp()
   } else {
