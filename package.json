@@ -28,9 +28,10 @@
   "author": "Gnosis",
   "license": "LGPL-3",
   "dependencies": {
-    "@gnosis.pm/gno-token": "^1.0.1",
-    "@gnosis.pm/owl-token": "^1.1.0",
-    "@gnosis.pm/util-contracts": "^1.0.1"
+    "@gnosis.pm/gno-token": "git://git@github.com:levelkdev/gno-token#e3482f0a9461ba8e13d87b07faaad573efb96214",
+    "@gnosis.pm/owl-token": "git://git@github.com:levelkdev/owl-token#6d09154539b9dd7d2e9a32f3606f802086484b28",
+    "@gnosis.pm/util-contracts": "git://git@github.com:levelkdev/util-contracts#c8c4c50a8474fd99b9b576bcc0bf42a0505f3752",
+    "openzeppelin-solidity": "github:gnosis/openzeppelin-solidity#fix-signed-safemath"
   },
   "devDependencies": {
     "@digix/tempo": "^0.2.0",
@@ -47,7 +48,7 @@
     "eslint-plugin-standard": "^3.1.0",
     "minimist": "^1.2.0",
     "solidity-coverage": "^0.5.4",
-    "truffle": "4.1.5",
+    "truffle": "4.1.11",
     "truffle-contract": "^3.0.5",
     "truffle-flattener": "^1.2.5",
     "truffle-hdwallet-provider": "0.0.5",

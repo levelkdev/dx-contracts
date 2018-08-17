@@ -1,6 +1,6 @@
 pragma solidity ^0.4.21;
 
-import "@gnosis.pm/util-contracts/contracts/StandardToken.sol";
+import "openzeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
 
 contract TestToken is StandardToken {
     address public minter;
@@ -19,7 +19,7 @@ contract TestToken is StandardToken {
       name = _name;
       decimals = _decimals;
     	balances[minter] = amount;
-      totalTokens = amount;
+      totalSupply_ = amount;
 
       emit SetMinter(minter);
       emit Mint(minter, amount);
@@ -27,7 +27,7 @@ contract TestToken is StandardToken {
 
     function mint (address _address, uint amount) public onlyMinter {
       balances[_address] += amount;
-      totalTokens += amount;
+      totalSupply_ += amount;
       emit Mint(_address, amount);
     }
 

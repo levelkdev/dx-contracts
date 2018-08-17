@@ -356,7 +356,7 @@ contract DutchExchange is Proxied {
         returns (uint)
     {
         // R1
-        require(Token(tokenAddress).transferFrom(msg.sender, this, amount));
+        require(ERC20(tokenAddress).transferFrom(msg.sender, this, amount));
 
         uint newBal = add(balances[tokenAddress][msg.sender], amount);
 
@@ -381,7 +381,7 @@ contract DutchExchange is Proxied {
         require(amount > 0);
 
         // R2
-        require(Token(tokenAddress).transfer(msg.sender, amount));
+        require(ERC20(tokenAddress).transfer(msg.sender, amount));
 
         uint newBal = sub(usersBalance, amount);
         balances[tokenAddress][msg.sender] = newBal;

@@ -1,5 +1,5 @@
 pragma solidity ^0.4.21;
-import "@gnosis.pm/util-contracts/contracts/StandardToken.sol";
+import "openzeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
 
 /// @title Standard token contract with overflow protection
 contract TokenFRT is StandardToken {
@@ -72,7 +72,7 @@ contract TokenFRT is StandardToken {
         require(msg.sender == minter);
 
         lockedTokenBalances[user] = add(lockedTokenBalances[user], amount);
-        totalTokens = add(totalTokens, amount);
+        totalSupply_ = add(totalSupply_, amount);
     }
 
     /// @dev Lock Token

@@ -1,6 +1,6 @@
 pragma solidity ^0.4.21;
 
-import "@gnosis.pm/util-contracts/contracts/StandardToken.sol";
+import "openzeppelin-solidity/contracts/token/ERC20/StandardToken.sol";
 
 contract TokenRDN is StandardToken {
     string public constant symbol = "RDN";
