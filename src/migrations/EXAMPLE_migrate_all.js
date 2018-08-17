@@ -1,7 +1,7 @@
 /* global artifacts, web3 */
 /* eslint no-undef: "error" */
 
-const deployMath = require('@gnosis.pm/util-contracts/src/migrations/2_deploy_math')
+const deploySafeMath = require('@gnosis.pm/util-contracts/src/migrations/2_deploy_safemath')
 const deployWeth = require('@gnosis.pm/util-contracts/src/migrations/3_deploy_WETH')
 const deployGno = require('@gnosis.pm/gno-token/src/migrations/3_deploy_GNO')
 const deployOwl = require('@gnosis.pm/owl-token/src/migrations/3_deploy_OWL.js')
@@ -25,7 +25,7 @@ module.exports = (deployer, network, accounts) => {
     }
 
     deployer
-      .then(() => deployMath(deployParams))
+      .then(() => deploySafeMath(deployParams))
       .then(() => deployWeth(deployParams))
       .then(() => deployGno(deployParams))
       .then(() => deployOwl(deployParams))

@@ -14,7 +14,7 @@
     "compile-todo": "eslint --fix . && eslint . && truffle compile",
     "compile": "truffle compile",
     "restore": "rm -rf build && npm run compile && npm run networks-reset",
-    "migrate": "truffle migrate",
+    "migrate": "truffle migrate --force",
     "lint": "eslint .",
     "add-token-pairs": "truffle exec src/truffle/add-token-pairs.js",
     "approve-tokens": "truffle exec src/truffle/approve-tokens.js",
